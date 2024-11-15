@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function ProductCard({ product }: { product: Product }) {
     const { image, title, description, price } = product;
     return (
-        <Link href={''} className="bg-white dark:bg-slate-900 hover:scale-110 transition-all shadow-md rounded-lg p-4">
+        <Link href={`/product/${product.id}`} className="bg-white dark:bg-slate-900 hover:scale-110 transition-all shadow-md rounded-lg p-4">
             <img
                 src={image}
                 alt={title}

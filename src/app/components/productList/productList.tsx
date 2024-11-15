@@ -4,7 +4,6 @@ import useFetch from "@/app/hooks/useFetch";
 import ProductCard from "../productCard/ProductCard";
 import { Product } from "@/app/interfaces/product.interface";
 
-
 export default function ProductList() {
     const { data, loading, error } = useFetch("https://fakestoreapi.com/products");
     const products = data as any;
