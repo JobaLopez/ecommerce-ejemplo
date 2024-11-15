@@ -11,12 +11,6 @@
     margin: auto;
 }
 
-.logo {
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: #155253;
-}
-
 .button-list {
 	display: flex;
 	gap: 1rem;
