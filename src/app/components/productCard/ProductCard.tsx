@@ -1,13 +1,16 @@
 import { Product } from "@/app/interfaces/product.interface";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function ProductCard({ product }: { product: Product }) {
     const { image, title, description, price } = product;
     return (
         <Link href={`/product/${product.id}`} className="bg-white dark:bg-slate-900 hover:scale-110 transition-all shadow-md rounded-lg p-4">
-            <img
+            <Image
                 src={image}
                 alt={title}
+                height={200}
+                width={200}
                 className="w-full h-48 object-cover rounded-lg"
             />
             <div className="mt-4">

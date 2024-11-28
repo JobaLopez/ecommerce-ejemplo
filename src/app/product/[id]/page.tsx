@@ -1,28 +1,31 @@
-'use client';
-
 import ProductInfo from "@/app/components/productInfo/productInfo";
-import RelatedProductList from "@/app/components/relatedProductList/relatedProductList";
-import useFetch from "@/app/hooks/useFetch";
 import { Product } from "@/app/interfaces/product.interface";
-import { usePathname } from "next/navigation";
+import { Metadata } from "next";
 
-export default function Home() {
-    const productId = usePathname().split('/').at(-1);
-    const { data, loading, error } = useFetch(`https://fakestoreapi.com/products/${productId}`);
-    const product: Product = data as any;
+type Props = {
+    params: Promise<{ id: string }>
+}
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+export async function generateMetadata(
+    { params }: Props
+): Promise<Metadata> {
+    // read route params
+    const id = (await params).id;
+    // fetch data
+    const product: Product = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json())
 
+    return {
+        title: product.title,
+        description: product.description,
+    }
+}
+
+export default function Home({ params }: Props) {
+    generateMetadata({params});
+    
     return (
         <>
-            <ProductInfo 
-                image={product.image} 
-                title={product.title} 
-                description={product.description} 
-                price={product.price} 
-                rating={product.rating} />
-            <RelatedProductList category={product.category} />
+            <ProductInfo />
         </>
     )
 }
