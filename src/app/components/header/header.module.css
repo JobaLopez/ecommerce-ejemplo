@@ -1,0 +1,26 @@
+.header {
+	border-bottom: 1px solid #eaeaea;
+}
+
+.info-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.button-list {
+	display: flex;
+	gap: 1rem;
+}
+
+.button {
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	background: #10d5dc;
+	color: #ffffff;
+	font-weight: 700;
+	cursor: pointer;
+}
